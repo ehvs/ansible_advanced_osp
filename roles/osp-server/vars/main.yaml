@@ -48,7 +48,7 @@ osp_server_vars:
     wait: no
     nics:
       - net-name: int_network
-    meta: 'group=apps,deployment_name=QA'
+    meta: 'group=appdbs,deployment_name=QA'
     userdata: |
       #!/bin/bash
       curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
@@ -68,7 +68,7 @@ osp_server_vars:
     wait: no
     nics:
       - net-name: int_network
-    meta: 'group=apps,deployment_name=QA'
+    meta: 'group=frontends,deployment_name=QA'
     userdata: |
       #!/bin/bash
       curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
