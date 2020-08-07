@@ -9,9 +9,7 @@ osp_server_vars:
     key_name: ansible_key
     flavor: m1.medium
     security_groups: apps
-    meta:
-      - group: apps
-        deployment_name: QA 
+    meta: 'group=apps,deployment_name=QA'
     userdata: |
       #!/bin/bash
       curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
