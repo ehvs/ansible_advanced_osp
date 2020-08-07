@@ -1,0 +1,24 @@
+---
+- name: Instance Creation
+  os_server:
+    cloud: "{{ item.value.cloud }}"
+    name: "{{ item.value.name }}"
+    key_name: "{{ item.value.key_name }}"
+    flavor: "{{ item.value.flavor }}"
+    security_groups: "{{ item.value.security_groups }}"
+    meta: "{{ item.value.meta }}"
+    delete_fip: "{{ item.value.delete_fips }}"
+    wait: "{{ item.value.wait }}"
+    nics: "{{ item.value.nics}}"
+    userdata: "{{ item.value.userdata}}"
+  with_dict: "{{ osp_server_vars }}"
+
+- name: Create IP
+  os_floating_ip:
+    cloud: "{{ item.value.cloud }}"
+    state: "{{ item.value.state }}"
+    reuse: "{{ item.value.reuse }}"
+    network: "{{ item.value.network }}"
+    wait: true
+    timeout: 200
+  with_dict: "{{ osp_server_vars }}"
