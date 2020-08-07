@@ -1,0 +1,91 @@
+---
+# vars file for osp.server
+# my custom dictionaire
+osp_server_vars:
+  app1:
+    cloud: openstack
+    name: app1
+    image: rhel-guest
+    key_name: ansible_key
+    flavor: m2.small
+    security_groups: apps
+    delete_fip: yes
+    wait: no
+    nics:
+      - net-name: int_network
+    meta:
+      - group: apps
+        deployment_name: QA 
+    userdata: |
+      #!/bin/bash
+      curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
+      cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+    state: present
+    reuse: yes
+    network: ext_network
+  
+  app2:
+    cloud: openstack
+    name: app1
+    image: rhel-guest
+    key_name: ansible_key
+    flavor: m2.small
+    security_groups: apps
+    delete_fip: yes
+    wait: no
+    nics:
+      - net-name: int_network
+    meta:
+      - group: apps
+        deployment_name: QA 
+    userdata: |
+      #!/bin/bash
+      curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
+      cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+    state: present
+    reuse: yes
+    network: ext_network
+
+  db:
+    cloud: openstack
+    name: app1
+    image: rhel-guest
+    key_name: ansible_key
+    flavor: m2.small
+    security_groups: db
+    delete_fip: yes
+    wait: no
+    nics:
+      - net-name: int_network
+    meta:
+      - group: appsdb
+        deployment_name: QA 
+    userdata: |
+      #!/bin/bash
+      curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
+      cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+    state: present
+    reuse: yes
+    network: ext_network
+
+  frontend:
+    cloud: openstack
+    name: app1
+    image: rhel-guest
+    key_name: ansible_key
+    flavor: m2.small
+    security_groups: frontend
+    delete_fip: yes
+    wait: no
+    nics:
+      - net-name: int_network
+    meta:
+      - group: frontends
+        deployment_name: QA 
+    userdata: |
+      #!/bin/bash
+      curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
+      cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+    state: present
+    reuse: yes
+    network: ext_network
