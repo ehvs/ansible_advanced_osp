@@ -7,7 +7,7 @@ osp_server_vars:
     name: app1
     image: rhel-guest
     key_name: ansible_key
-    flavor: m2.small
+    flavor: m1.medium
     security_groups: apps
     delete_fip: yes
     wait: no
@@ -15,7 +15,7 @@ osp_server_vars:
       - net-name: int_network
     meta:
       - group: apps
-        deployment_name: QA 
+      - deployment_name: QA 
     userdata: |
       #!/bin/bash
       curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
@@ -29,7 +29,7 @@ osp_server_vars:
     name: app1
     image: rhel-guest
     key_name: ansible_key
-    flavor: m2.small
+    flavor: m1.medium
     security_groups: apps
     delete_fip: yes
     wait: no
@@ -37,7 +37,7 @@ osp_server_vars:
       - net-name: int_network
     meta:
       - group: apps
-        deployment_name: QA 
+      - deployment_name: QA 
     userdata: |
       #!/bin/bash
       curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
@@ -51,7 +51,7 @@ osp_server_vars:
     name: app1
     image: rhel-guest
     key_name: ansible_key
-    flavor: m2.small
+    flavor: m1.medium
     security_groups: db
     delete_fip: yes
     wait: no
@@ -59,7 +59,7 @@ osp_server_vars:
       - net-name: int_network
     meta:
       - group: appsdb
-        deployment_name: QA 
+      - deployment_name: QA 
     userdata: |
       #!/bin/bash
       curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
@@ -73,7 +73,7 @@ osp_server_vars:
     name: app1
     image: rhel-guest
     key_name: ansible_key
-    flavor: m2.small
+    flavor: m1.medium
     security_groups: frontend
     delete_fip: yes
     wait: no
@@ -81,7 +81,7 @@ osp_server_vars:
       - net-name: int_network
     meta:
       - group: frontends
-        deployment_name: QA 
+      - deployment_name: QA 
     userdata: |
       #!/bin/bash
       curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
