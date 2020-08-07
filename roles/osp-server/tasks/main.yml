@@ -18,9 +18,10 @@
 
 - name: Create IP
   os_floating_ip:
-    cloud: "{{ item.value.cloud }}"
+    cloud: openstack
     state: "{{ item.value.state }}"
     reuse: "{{ item.value.reuse }}"
+    server: "{{ item.value.name }}"
     network: "{{ item.value.network }}"
     wait: true
     timeout: 200

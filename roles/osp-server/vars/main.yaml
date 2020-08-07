@@ -6,12 +6,10 @@ osp_server_vars:
     name: app1
     state: present
     image: rhel-guest
-    key_name: ansible_key
+    key_name: ansible_ssh
     flavor: m1.medium
     security_groups: apps
-    meta:
-      - group: apps
-        deployment_name: QA 
+    meta: 'group=apps,deployment_name=QA'
     userdata: |
       #!/bin/bash
       curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
@@ -21,18 +19,16 @@ osp_server_vars:
   
   app2:
     cloud: openstack
-    name: app1
+    name: app2
     image: rhel-guest
-    key_name: ansible_key
+    key_name: ansible_ssh
     flavor: m1.medium
     security_groups: apps
     delete_fip: yes
     wait: no
     nics:
       - net-name: int_network
-    meta:
-      - group: apps
-      - deployment_name: QA 
+    meta: 'group=apps,deployment_name=QA'
     userdata: |
       #!/bin/bash
       curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
@@ -43,18 +39,16 @@ osp_server_vars:
 
   db:
     cloud: openstack
-    name: app1
+    name: db
     image: rhel-guest
-    key_name: ansible_key
+    key_name: ansible_ssh
     flavor: m1.medium
     security_groups: db
     delete_fip: yes
     wait: no
     nics:
       - net-name: int_network
-    meta:
-      - group: appsdb
-      - deployment_name: QA 
+    meta: 'group=apps,deployment_name=QA'
     userdata: |
       #!/bin/bash
       curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
@@ -65,18 +59,16 @@ osp_server_vars:
 
   frontend:
     cloud: openstack
-    name: app1
+    name: frontend
     image: rhel-guest
-    key_name: ansible_key
+    key_name: ansible_ssh
     flavor: m1.medium
     security_groups: frontend
     delete_fip: yes
     wait: no
     nics:
       - net-name: int_network
-    meta:
-      - group: frontends
-      - deployment_name: QA 
+    meta: 'group=apps,deployment_name=QA'
     userdata: |
       #!/bin/bash
       curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
