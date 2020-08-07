@@ -3,7 +3,6 @@
 # my custom dictionaire
 osp_server_vars:
   app1:
-    cloud: openstack
     name: app1
     state: present
     image: rhel-guest

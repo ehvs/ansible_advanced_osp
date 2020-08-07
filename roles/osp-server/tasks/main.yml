@@ -1,7 +1,6 @@
 ---
 - name: Instance Creation
   os_server:
-#    cloud: "{{ item.value.cloud }}"
     cloud: openstack
     name: "{{ item.value.name }}"
     state: "{{ item.value.state }}"
