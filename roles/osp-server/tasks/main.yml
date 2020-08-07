@@ -1,16 +1,19 @@
 ---
 - name: Instance Creation
   os_server:
-    cloud: "{{ item.value.cloud }}"
+#    cloud: "{{ item.value.cloud }}"
+    cloud: openstack
     name: "{{ item.value.name }}"
+    state: "{{ item.value.state }}"
     image: "{{ item.value.image }}"
     key_name: "{{ item.value.key_name }}"
     flavor: "{{ item.value.flavor }}"
     security_groups: "{{ item.value.security_groups }}"
     meta: "{{ item.value.meta }}"
-    delete_fip: "{{ item.value.delete_fip }}"
-    wait: "{{ item.value.wait }}"
-    nics: "{{ item.value.nics}}"
+    delete_fip: yes
+    wait: no
+    nics:
+      - net-name: int_network
     userdata: "{{ item.value.userdata}}"
   with_dict: "{{ osp_server_vars }}"
 
